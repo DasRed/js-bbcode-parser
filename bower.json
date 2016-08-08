@@ -1,0 +1,14 @@
+{
+    "name": "bbcode-parser",
+    "homepage": "https://github.com/DasRed/js-bbcode-parser",
+    "main": "Simple and efficient bbcode parser.",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {}
+}
