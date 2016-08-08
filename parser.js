@@ -75,11 +75,11 @@
          */
         setCodes: {
             value: function (codes) {
-                this.codes = Object.keys(this.code).map(function (replacement) {
-                    var regex = this.code[replacement];
+                this.codes = Object.keys(codes).map(function (regex) {
+                    var replacement = codes[regex];
 
                     return {
-                        regexp: new RegExp(regex.slice(1, regex.lastIndexOf('#')), 'igm'),
+                        regexp: new RegExp(regex, 'igm'),
                         replacement: replacement
                     };
                 }, this);
@@ -94,50 +94,39 @@
 
     // create the Default
     BBCode.default = new BBCode({
-        '#\[br\]#i': '<br>',
+        '\\[br\\]': '<br>',
 
-        '#\[b\](.+)\[/b\]#isU': '<strong>$1</strong>',
-        '#\[i\](.+)\[/i\]#isU': '<em>$1</em>',
-        '#\[u\](.+)\[/u\]#isU': '<u>$1</u>',
+        '\\[b\\](.+)\\[/b\\]': '<strong>$1</strong>',
+        '\\[i\\](.+)\\[/i\\]': '<em>$1</em>',
+        '\\[u\\](.+)\\[/u\\]': '<u>$1</u>',
 
-        '#\[h1\](.+)\[/h1\]#isU': '<h1><a href="#$1" name="$1">$1</a></h1>',
-        '#\[h2\](.+)\[/h2\]#isU': '<h2><a href="#$1" name="$1">$1</a></h2>',
-        '#\[h3\](.+)\[/h3\]#isU': '<h3><a href="#$1" name="$1">$1</a></h3>',
-        '#\[h4\](.+)\[/h4\]#isU': '<h4><a href="#$1" name="$1">$1</a></h4>',
-        '#\[h5\](.+)\[/h5\]#isU': '<h5><a href="#$1" name="$1">$1</a></h5>',
-        '#\[h6\](.+)\[/h6\]#isU': '<h6><a href="#$1" name="$1">$1</a></h6>',
+        '\\[h1\\](.+)\\[/h1\\]': '<h1><a href="$1" name="$1">$1</a></h1>',
+        '\\[h2\\](.+)\\[/h2\\]': '<h2><a href="$1" name="$1">$1</a></h2>',
+        '\\[h3\\](.+)\\[/h3\\]': '<h3><a href="$1" name="$1">$1</a></h3>',
+        '\\[h4\\](.+)\\[/h4\\]': '<h4><a href="$1" name="$1">$1</a></h4>',
+        '\\[h5\\](.+)\\[/h5\\]': '<h5><a href="$1" name="$1">$1</a></h5>',
+        '\\[h6\\](.+)\\[/h6\\]': '<h6><a href="$1" name="$1">$1</a></h6>',
 
-        '#\[p\](.+)\[/p\]#isU': '<p>$1</p>',
+        '\\[p\\](.+)\\[/p\\]': '<p>$1</p>',
 
-        '#\[color=(.+)\](.+)\[/color\]#isU': '<span style="color:$1">$2</span>',
-        '#\[size=([0-9]+)\](.+)\[/size\]#isU': '<span style="font-size:$1px">$2</span>',
+        '\\[color=(.+)\\](.+)\\[/color\\]': '<span style="color:$1">$2</span>',
+        '\\[size=([0-9]+)\\](.+)\\[/size\\]': '<span style="font-size:$1px">$2</span>',
 
-        '#\[img\](.+)\[/img\]#isU': '<img src="$1">',
-        '#\[img=(.+)\]#isU': '<img src="$1">',
+        '\\[img\\](.+)\\[/img\\]': '<img src="$1">',
+        '\\[img=(.+)\\]': '<img src="$1">',
 
-        '#\[email\](.+)\[/email\]#isU': '<a href="mailto:$1">$1</a>',
-        '#\[email=(.+)\](.+)\[/email\]#isU': '<a href="mailto:$1">$2</a>',
+        '\\[email\\](.+)\\[/email\\]': '<a href="mailto:$1">$1</a>',
+        '\\[email=(.+)\\](.+)\\[/email\\]': '<a href="mailto:$1">$2</a>',
 
-        '#\[url\](.+)\[/url\]#isU': '<a href="$1">$1</a>',
-        '#\[url=(.+)\|onclick\](.+)\[/url\]#isU': '<a onclick="$1">$2</a>',
-        '#\[url=(.+)\starget=(.+)\](.+)\[/url\]#isU': '<a href="$1" target="$2">$3</a>',
-        '#\[url=(.+)\](.+)\[/url\]#isU': '<a href="$1">$2</a>',
+        '\\[url\\](.+)\\[/url\\]': '<a href="$1">$1</a>',
+        '\\[url=(.+)\\|onclick\\](.+)\[/url\]': '<a onclick="$1">$2</a>',
+        '\\[url=(.+)\starget=(.+)\\](.+)\[/url\]': '<a href="$1" target="$2">$3</a>',
+        '\\[url=(.+)\\](.+)\\[/url\\]': '<a href="$1">$2</a>',
 
-        '#\[a=(.+)\](.+)\[/a\]#isU': '<a href="#$1" name="$1">$2</a>',
+        '\\[a=(.+)\\](.+)\\[/a\\]': '<a href="$1" name="$1">$2</a>',
 
-        '#\[list\](.+)\[/list\]#isU': '<ul>$1</ul>',
-        '#\[\*\](.+)\[/\*\]#isU': '<li>$1</li>',
-
-        '#\[table\](.+)\[/table\]#isU': '<table class="bbCodeTable">$1</table>',
-        '#\[table width=(.+)\](.+)\[/table\]#isU': '<table class="bbCodeTable" style="width: $1;">$2</table>',
-        '#\[thead\](.+)\[/thead\]#isU': '<thead>$1</thead>',
-        '#\[tbody\](.+)\[/tbody\]#isU': '<tbody>$1</tbody>',
-        '#\[tfoot\](.+)\[/tfoot\]#isU': '<tfoot>$1</tfoot>',
-        '#\[tr\](.+)\[/tr\]#isU': '<tr>$1</tr>',
-        '#\[th\](.+)\[/th\]#isU': '<th>$1</th>',
-        '#\[th align=(.+)\](.+)\[/th\]#isU': '<th style="text-align: $1;">$2</th>',
-        '#\[td\](.+)\[/td\]#isU': '<td>$1</td>',
-        '#\[td align=(.+)\](.+)\[/td\]#isU': '<td style="text-align: $1;">$2</td>'
+        '\\[list\\](.+)\\[/list\\]': '<ul>$1</ul>',
+        '\\[\*\\](.+)\\[/\\*\\]': '<li>$1</li>'
     });
 
     // define configuration function for default
