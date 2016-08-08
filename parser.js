@@ -36,7 +36,7 @@
     }
 
     // prototype
-    BBCode.prototype = Object.create(Base.prototype, {
+    BBCode.prototype = Object.create(Object.prototype, {
 
         /**
          * all codes in structure.
