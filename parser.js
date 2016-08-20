@@ -48,49 +48,40 @@
             enumerable: false,
             configurable: false,
             writable: true
-        },
-
-        /**
-         * parse
-         *
-         * @param {String} text
-         * @returns {String}
-         */
-        parse: {
-            value: function (text) {
-                return this.codes.reduce(function (text, code) {
-                    return text.replace(code.regexp, code.replacement);
-                }, text);
-            },
-            enumerable: false,
-            configurable: false,
-            writable: true
-        },
-
-        /**
-         * set bb codes
-         *
-         * @param {Object} codes
-         * @returns {BBCode}
-         */
-        setCodes: {
-            value: function (codes) {
-                this.codes = Object.keys(codes).map(function (regex) {
-                    var replacement = codes[regex];
-
-                    return {
-                        regexp: new RegExp(regex, 'igm'),
-                        replacement: replacement
-                    };
-                }, this);
-
-                return this;
-            },
-            enumerable: false,
-            configurable: false,
-            writable: true
         }
     });
+    ,
+
+    /**
+     * parse
+     *
+     * @param {String} text
+     * @returns {String}
+     */
+    BBCode.prototype.parse = function (text) {
+        return this.codes.reduce(function (text, code) {
+            return text.replace(code.regexp, code.replacement);
+        }, text);
+    };
+
+    /**
+     * set bb codes
+     *
+     * @param {Object} codes
+     * @returns {BBCode}
+     */
+    BBCode.prototype.setCodes = function (codes) {
+        this.codes = Object.keys(codes).map(function (regex) {
+            var replacement = codes[regex];
+
+            return {
+                regexp: new RegExp(regex, 'igm'),
+                replacement: replacement
+            };
+        }, this);
+
+        return this;
+    };
 
     // create the Default
     BBCode.default = new BBCode({
