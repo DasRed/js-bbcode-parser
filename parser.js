@@ -50,7 +50,6 @@
             writable: true
         }
     });
-    ,
 
     /**
      * parse
