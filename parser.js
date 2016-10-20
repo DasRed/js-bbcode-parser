@@ -17,7 +17,7 @@
      * BBCode parser
      *
      * @param {Object} codes
-     * @param {Object} options
+     * @param {Object} [options]
      */
     function BBCode(codes, options) {
         this.codes = [];
