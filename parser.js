@@ -64,6 +64,22 @@
     };
 
     /**
+     * add bb codes
+     *
+     * @param {String} regex
+     * @param {String} replacement
+     * @returns {BBCode}
+     */
+    BBCode.prototype.add = function (regex, replacement) {
+        this.codes.push({
+            regexp: new RegExp(regex, 'igm'),
+            replacement: replacement
+        });
+
+        return this;
+    };
+
+    /**
      * set bb codes
      *
      * @param {Object} codes
