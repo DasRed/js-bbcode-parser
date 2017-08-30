@@ -1,7 +1,12 @@
 # bbcode-parser
-## Install
-```
+
+# General
+This is a simple BBCode parser. 
+
+# Installation
+```bash
 bower install bbcode-parser --save
+npm install js-bbcode-parser --save
 ```
 
 # How To
@@ -14,17 +19,6 @@ var parser = BBCode.default
 
 // configure the default parser with
 BBCode.setCodes({});
-```
-
-
-
-
-# General
-This is a simple BBCode parser. 
-
-# Installation
-```bash
-bower install bbcode-parser --save
 ```
 
 # Usage

@@ -1,0 +1,16 @@
+{
+  "name": "js-bbcode-parser",
+  "version": "1.0.7",
+  "description": "Simple and efficient bbcode parser.",
+  "main": "parser.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DasRed/js-bbcode-parser.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DasRed/js-bbcode-parser/issues"
+  },
+  "homepage": "https://github.com/DasRed/js-bbcode-parser#readme"
+}
