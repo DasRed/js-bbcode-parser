@@ -1,6 +1,6 @@
 {
   "name": "js-bbcode-parser",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "Simple and efficient bbcode parser.",
   "main": "parser.js",
   "repository": {

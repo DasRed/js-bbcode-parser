@@ -109,7 +109,7 @@
     }();
 
     // create the Default
-    BBCode.default = new BBCode({
+    var bbCodeParser = new BBCode({
         '\\[br\\]': '<br>',
 
         '\\[b\\](.+)\\[/b\\]': '<strong>$1</strong>',
@@ -146,7 +146,7 @@
     });
 
     // define configuration function for default
-    BBCode.setCodes = BBCode.default.setCodes.bind(BBCode.default);
+    bbCodeParser.create = BBCode;
 
-    exports.default = BBCode;
+    exports.default = bbCodeParser;
 });

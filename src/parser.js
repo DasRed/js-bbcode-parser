@@ -66,7 +66,7 @@ class BBCode {
 }
 
 // create the Default
-BBCode.default = new BBCode({
+const bbCodeParser = new BBCode({
     '\\[br\\]': '<br>',
 
     '\\[b\\](.+)\\[/b\\]': '<strong>$1</strong>',
@@ -103,6 +103,6 @@ BBCode.default = new BBCode({
 });
 
 // define configuration function for default
-BBCode.setCodes = BBCode.default.setCodes.bind(BBCode.default);
+bbCodeParser.create = BBCode;
 
-export default BBCode;
+export default bbCodeParser;
