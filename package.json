@@ -1,6 +1,6 @@
 {
   "name": "js-bbcode-parser",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple and efficient bbcode parser.",
   "main": "parser.js",
   "repository": {
@@ -13,7 +13,7 @@
     "url": "https://github.com/DasRed/js-bbcode-parser/issues"
   },
   "homepage": "https://github.com/DasRed/js-bbcode-parser#readme",
-  "dependencies": {
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1"
   },
