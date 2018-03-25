@@ -1,102 +1,112 @@
-'use strict';
-
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], function () {
-            return factory();
-        });
-
-    } else if (typeof exports !== 'undefined') {
-        root.BBCode = factory();
-
+(function (global, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(['exports'], factory);
+    } else if (typeof exports !== "undefined") {
+        factory(exports);
     } else {
-        root.BBCode = factory();
+        var mod = {
+            exports: {}
+        };
+        factory(mod.exports);
+        global.parser = mod.exports;
     }
-}(this, function () {
-    /**
-     * BBCode parser
-     *
-     * @param {Object} codes
-     * @param {Object} [options]
-     */
-    function BBCode(codes, options) {
-        this.codes = [];
+})(this, function (exports) {
+    'use strict';
 
-        options = options || {};
-
-        // copy options
-        for (var optionName in options) {
-            if (optionName === 'events') {
-                continue;
-            }
-            this[optionName] = options[optionName];
-        }
-
-        this.setCodes(codes);
-    }
-
-    // prototype
-    BBCode.prototype = Object.create(Object.prototype, {
-
-        /**
-         * all codes in structure.
-         *
-         * @var {Array}
-         */
-        codes: {
-            value: null,
-            enumerable: false,
-            configurable: false,
-            writable: true
-        }
+    Object.defineProperty(exports, "__esModule", {
+        value: true
     });
 
-    /**
-     * parse
-     *
-     * @param {String} text
-     * @returns {String}
-     */
-    BBCode.prototype.parse = function (text) {
-        return this.codes.reduce(function (text, code) {
-            return text.replace(code.regexp, code.replacement);
-        }, text);
-    };
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
 
-    /**
-     * add bb codes
-     *
-     * @param {String} regex
-     * @param {String} replacement
-     * @returns {BBCode}
-     */
-    BBCode.prototype.add = function (regex, replacement) {
-        this.codes.push({
-            regexp: new RegExp(regex, 'igm'),
-            replacement: replacement
-        });
+    var _createClass = function () {
+        function defineProperties(target, props) {
+            for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
+                descriptor.enumerable = descriptor.enumerable || false;
+                descriptor.configurable = true;
+                if ("value" in descriptor) descriptor.writable = true;
+                Object.defineProperty(target, descriptor.key, descriptor);
+            }
+        }
 
-        return this;
-    };
+        return function (Constructor, protoProps, staticProps) {
+            if (protoProps) defineProperties(Constructor.prototype, protoProps);
+            if (staticProps) defineProperties(Constructor, staticProps);
+            return Constructor;
+        };
+    }();
 
-    /**
-     * set bb codes
-     *
-     * @param {Object} codes
-     * @returns {BBCode}
-     */
-    BBCode.prototype.setCodes = function (codes) {
-        this.codes = Object.keys(codes).map(function (regex) {
-            var replacement = codes[regex];
+    var BBCode = function () {
+        /**
+         * @param {Object} codes
+         * @param {Object} [options]
+         */
+        function BBCode(codes, options) {
+            _classCallCheck(this, BBCode);
 
-            return {
-                regexp: new RegExp(regex, 'igm'),
-                replacement: replacement
-            };
-        }, this);
+            this.codes = [];
 
-        return this;
-    };
+            options = options || {};
+
+            // copy options
+            for (var optionName in options) {
+                if (optionName === 'events') {
+                    continue;
+                }
+                this[optionName] = options[optionName];
+            }
+
+            this.setCodes(codes);
+        }
+
+        /**
+         * parse
+         *
+         * @param {String} text
+         * @returns {String}
+         */
+
+
+        _createClass(BBCode, [{
+            key: 'parse',
+            value: function parse(text) {
+                return this.codes.reduce(function (text, code) {
+                    return text.replace(code.regexp, code.replacement);
+                }, text);
+            }
+        }, {
+            key: 'add',
+            value: function add(regex, replacement) {
+                this.codes.push({
+                    regexp: new RegExp(regex, 'igm'),
+                    replacement: replacement
+                });
+
+                return this;
+            }
+        }, {
+            key: 'setCodes',
+            value: function setCodes(codes) {
+                this.codes = Object.keys(codes).map(function (regex) {
+                    var replacement = codes[regex];
+
+                    return {
+                        regexp: new RegExp(regex, 'igm'),
+                        replacement: replacement
+                    };
+                }, this);
+
+                return this;
+            }
+        }]);
+
+        return BBCode;
+    }();
 
     // create the Default
     BBCode.default = new BBCode({
@@ -138,5 +148,5 @@
     // define configuration function for default
     BBCode.setCodes = BBCode.default.setCodes.bind(BBCode.default);
 
-    return BBCode;
-}));
+    exports.default = BBCode;
+});

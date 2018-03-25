@@ -1,3 +1,2 @@
 /.idea
-/bower_components
-/index.html
+node_modules
