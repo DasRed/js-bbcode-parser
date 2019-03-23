@@ -92,14 +92,14 @@ const bbCodeParser = new BBCode({
     '\\[email=(.+?)\\](.+?)\\[/email\\]': '<a href="mailto:$1">$2</a>',
 
     '\\[url\\](.+?)\\[/url\\]':                 '<a href="$1">$1</a>',
-    '\\[url=(.+?)\\|onclick\\](.+?)\[/url\]':    '<a onclick="$1">$2</a>',
-    '\\[url=(.+?)\starget=(.+?)\\](.+)\[/url\]': '<a href="$1" target="$2">$3</a>',
-    '\\[url=(.+)\\](.+?)\\[/url\\]':            '<a href="$1">$2</a>',
+    '\\[url=(.+?)\\|onclick\\](.+?)\\[/url\\]':    '<a onclick="$1">$2</a>',
+    '\\[url=(.+?)\\starget=(.+?)\\](.+?)\\[/url\\]': '<a href="$1" target="$2">$3</a>',
+    '\\[url=(.+?)\\](.+?)\\[/url\\]':            '<a href="$1">$2</a>',
 
-    '\\[a=(.+)\\](.+?)\\[/a\\]': '<a href="$1" name="$1">$2</a>',
+    '\\[a=(.+?)\\](.+?)\\[/a\\]': '<a href="$1" name="$1">$2</a>',
 
     '\\[list\\](.+?)\\[/list\\]': '<ul>$1</ul>',
-    '\\[\*\\](.+?)\\[/\\*\\]':    '<li>$1</li>'
+    '\\[\\*\\](.+?)\\[/\\*\\]':    '<li>$1</li>'
 });
 
 // define configuration function for default
