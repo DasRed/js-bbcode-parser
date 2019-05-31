@@ -1,3 +1,5 @@
 /.idea
-/test.js
-node_modules
+/dist
+/node_modules
+/index.html
+npm-debug.log
