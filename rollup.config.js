@@ -1,12 +1,9 @@
-import resolve from 'rollup-plugin-node-resolve';
-import progress from 'rollup-plugin-progress';
+import resolve from '@rollup/plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import {terser} from "rollup-plugin-terser";
 import clear from "rollup-plugin-clear";
 
-const progressOptions = {clearLine: false};
-
-const babelOptionsES2015 = {
+const babelOptionsES5 = {
     runtimeHelpers:  false,
     externalHelpers: false,
     babelrc:         false,
@@ -38,8 +35,6 @@ const babelOptionsES2018 = {
     ]
 };
 
-const terserOptions = {sourcemap: true};
-
 // https://rollupjs.org/guide/en#big-list-of-options
 export default [
     // ES2015 Minified
@@ -55,9 +50,8 @@ export default [
         plugins: [
             resolve(),
             clear({targets: ['./dist']}),
-            progress(progressOptions),
-            babel(babelOptionsES2015),
-            terser(terserOptions),
+            babel(babelOptionsES5),
+            terser(),
         ]
     },
     // ES2015 None-Minified
@@ -72,8 +66,7 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
-            babel(babelOptionsES2015),
+            babel(babelOptionsES5),
         ]
     },
     // ES Modules Minified
@@ -87,9 +80,8 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
             babel(babelOptionsES2018),
-            terser(terserOptions),
+            terser(),
         ]
     },
     // ES Modules None-Minified
@@ -103,7 +95,6 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
             babel(babelOptionsES2018),
         ]
     },
@@ -120,9 +111,8 @@ export default [
         plugins: [
             resolve(),
             clear({targets: ['./dist']}),
-            progress(progressOptions),
-            babel(babelOptionsES2015),
-            terser(terserOptions),
+            babel(babelOptionsES5),
+            terser(),
         ]
     },
     // ES2015 None-Minified
@@ -137,8 +127,7 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
-            babel(babelOptionsES2015),
+            babel(babelOptionsES5),
         ]
     },
     // ES Modules Minified
@@ -152,9 +141,8 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
             babel(babelOptionsES2018),
-            terser(terserOptions),
+            terser(),
         ]
     },
     // ES Modules None-Minified
@@ -168,7 +156,6 @@ export default [
         },
         plugins: [
             resolve(),
-            progress(progressOptions),
             babel(babelOptionsES2018),
         ]
     },
