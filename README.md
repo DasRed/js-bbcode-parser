@@ -10,10 +10,13 @@ npm install js-bbcode-parser --save
 
 # How To
 ```javascript
+// this imports the default parser
 import bbCodeParser from 'js-bbcode-parser';
+// this import the class constructor of the parser
+import BBCodeParser from 'js-bbcode-parser/src/index.js';
 
 // use to create a clean parser
-const parserA = bbCodeParser.create({}, {});
+const parserA = new BBCodeParser({});
 
 // configure the default parser with
 bbCodeParser.setCodes({});
@@ -82,9 +85,9 @@ BBCode                                               | HTML
 You can provide your own BBCodes. The key of the codes object must be a regex part and the value is the replacement.
 
 ```javascript
-import bbCodeParser from 'js-bbcode-parser';
+import BBCodeParser from 'js-bbcode-parser/src/index.js';
 
-const parser = bbCodeParser.create({
+const parser = new BBCodeParser({
     '\\[br\\]': '<br>'
 });
 console.log(parser.parse('This is a text[br]with HTML Break.'));
