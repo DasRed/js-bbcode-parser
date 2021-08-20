@@ -13,7 +13,7 @@ npm install js-bbcode-parser --save
 import bbCodeParser from 'js-bbcode-parser';
 
 // use to create a clean parser
-const parserA = bbCodeParser.create{}, {})
+const parserA = bbCodeParser.create({}, {});
 
 // configure the default parser with
 bbCodeParser.setCodes({});

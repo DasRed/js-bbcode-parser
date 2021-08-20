@@ -3,6 +3,7 @@
     "version": "3.0.4",
     "description": "Simple and efficient bbcode parser.",
     "main": "src/simple.js",
+    "type": "module",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/DasRed/js-bbcode-parser.git"
