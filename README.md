@@ -3,6 +3,8 @@
 # General
 This is a simple BBCode parser. 
 
+**NOTE**: js-bbcode-parser does not purify the user input for xss.
+
 # Installation
 ```bash
 npm install js-bbcode-parser --save
