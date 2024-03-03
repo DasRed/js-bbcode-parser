@@ -17,7 +17,6 @@
     "scripts": {
         "build": "node build/build.js",
         "test": "mocha",
-        "prepublishOnly": "npm run test && npm run build",
         "semantic-release": "semantic-release"
     },
     "keywords": [
