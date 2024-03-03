@@ -15,6 +15,7 @@ export default new BBCode({
     '\\[h6\\](.+?)\\[/h6\\]': '<h6>$1</h6>',
 
     '\\[p\\](.+?)\\[/p\\]': '<p>$1</p>',
+    '\\[code\\](.+?)\\[/code\\]': '<pre>$1</pre>',
 
     '\\[color=(.+?)\\](.+?)\\[/color\\]':  '<span style="color:$1">$2</span>',
     '\\[size=([0-9]+)\\](.+?)\\[/size\\]': '<span style="font-size:$1px">$2</span>',
