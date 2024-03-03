@@ -1,0 +1,4 @@
+kind: template
+load: nodePackagePublishToNpm.jsonnet
+data:
+    node: 21
