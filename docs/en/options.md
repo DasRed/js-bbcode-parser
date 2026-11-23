@@ -1,6 +1,6 @@
 ---
 title: Options
-description: Constructor, methods and all default BBCodes of js-bbcode-parser, plus the known limitations.
+description: Reference of js-bbcode-parser with constructor, methods and all default BBCodes such as [b], [url] and [img], plus the known limitations of the parser.
 order: 30
 slug: options
 section: Reference

@@ -1,6 +1,6 @@
 ---
 title: Optionen
-description: Konstruktor, Methoden und alle Standard-BBCodes von js-bbcode-parser, dazu die bekannten Grenzen.
+description: Referenz von js-bbcode-parser mit Konstruktor, Methoden und allen Standard-BBCodes wie [b], [url] und [img], dazu die bekannten Einschränkungen des Parsers.
 order: 30
 slug: optionen
 section: Referenz

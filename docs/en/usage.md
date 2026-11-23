@@ -1,6 +1,6 @@
 ---
 title: Usage
-description: Use the default parser, define custom BBCodes, extend the parser and secure user input.
+description: Convert BBCode to HTML with js-bbcode-parser, using the default parser, custom BBCodes, replacement functions, ordering and safe handling of user input.
 order: 20
 slug: usage
 section: Getting started

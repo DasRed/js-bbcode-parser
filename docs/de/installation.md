@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: js-bbcode-parser per npm installieren und den passenden Import für Node.js, Bundler oder Browser wählen.
+description: js-bbcode-parser per npm installieren, die Voraussetzungen prüfen und den passenden Import für Node.js, Bundler wie esbuild oder Vite oder den Browser wählen.
 order: 10
 slug: installation
 section: Einstieg

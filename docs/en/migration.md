@@ -1,6 +1,6 @@
 ---
 title: Migration
-description: What changed when moving to version 4 and 5 of js-bbcode-parser.
+description: What changed in js-bbcode-parser from version 3 to 4 and from 4 to 5, and which parts of your code you have to adjust when you update to the new major version.
 order: 40
 slug: migration
 section: Reference

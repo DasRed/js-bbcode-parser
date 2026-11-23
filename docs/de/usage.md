@@ -1,6 +1,6 @@
 ---
 title: Verwendung
-description: Standard-Parser nutzen, eigene BBCodes anlegen, den Parser erweitern und Eingaben von Nutzern absichern.
+description: BBCode in HTML umwandeln mit js-bbcode-parser, mit Standard-Parser, eigenen BBCodes, Ersetzung als Funktion, Reihenfolge und abgesicherten Eingaben von Nutzern.
 order: 20
 slug: verwendung
 section: Einstieg
