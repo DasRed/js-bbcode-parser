@@ -1,41 +1,75 @@
 {
     "name": "js-bbcode-parser",
     "version": "5.1.3",
-    "description": "Simple and efficient bbcode parser.",
-    "main": "src/simple.js",
+    "description": "Simple, safe and efficient BBCode parser for browsers and Node.js",
     "type": "module",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/DasRed/js-bbcode-parser.git"
-    },
     "author": "Marco Starker",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/DasRed/js-bbcode-parser/issues"
     },
     "homepage": "https://www.marco-starker.de/en/projects/js-bbcode-parser/docs",
-    "scripts": {
-        "build": "node build/build.js",
-        "test": "mocha"
+    "engines": {
+        "node": ">=22.13.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DasRed/js-bbcode-parser.git"
     },
     "keywords": [
         "bbcode",
-        "parser"
+        "parser",
+        "html"
     ],
-    "files": [
-        "/dist/*",
-        "/src/*"
-    ],
-    "devDependencies": {
-        "esbuild": "^0.28.2",
-        "esbuild-plugin-clear": "^1.0.1",
-        "esbuild-plugin-time": "^1.0.0",
-        "mocha": "^12.0.3"
+    "sideEffects": false,
+    "main": "./dist/simple.cjs",
+    "module": "./dist/simple.js",
+    "types": "./dist/simple.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/simple.d.ts",
+                "default": "./dist/simple.js"
+            },
+            "require": {
+                "types": "./dist/simple.d.cts",
+                "default": "./dist/simple.cjs"
+            }
+        },
+        "./parser": {
+            "import": {
+                "types": "./dist/parser.d.ts",
+                "default": "./dist/parser.js"
+            },
+            "require": {
+                "types": "./dist/parser.d.cts",
+                "default": "./dist/parser.cjs"
+            }
+        },
+        "./codes": {
+            "import": {
+                "types": "./dist/codes.d.ts",
+                "default": "./dist/codes.js"
+            },
+            "require": {
+                "types": "./dist/codes.d.cts",
+                "default": "./dist/codes.cjs"
+            }
+        },
+        "./package.json": "./package.json"
     },
-    "mocha": {
-        "recursive": true,
-        "extension": [
-            "test.js"
-        ]
+    "files": [
+        "dist/*"
+    ],
+    "scripts": {
+        "build": "tsdown",
+        "test": "vitest run",
+        "coverage": "vitest run --coverage --reporter=default --reporter=junit --outputFile.junit=coverage/reports/unittest.xml"
+    },
+    "devDependencies": {
+        "@vitest/coverage-v8": "^5.1.1",
+        "tsdown": "^0.23.7",
+        "typescript": "^7.0.2",
+        "vitest": "^5.1.1"
     }
 }

@@ -1,6 +1,6 @@
 ---
 title: Überblick
-description: Schlanker BBCode-Parser für Browser und Node.js, der BBCode per regulären Ausdrücken in HTML umwandelt und eigene Codes erlaubt.
+description: Schlanker BBCode-Parser für Browser und Node.js, der BBCode per regulären Ausdrücken in sicheres HTML umwandelt, Eingaben escaped und eigene Codes erlaubt.
 order: 0
 section: Einstieg
 ---
@@ -20,16 +20,24 @@ bbCodeParser.parse('[b]Hallo[/b] [url=https://example.com]Welt[/url]');
 
 ## So funktioniert er
 
-Jeder BBCode ist ein regulärer Ausdruck mit einer Ersetzung. `parse()` wendet alle Ausdrücke der Reihe nach auf den
-Text an. Das hält den Parser klein und leicht erweiterbar, heißt aber auch: Es gibt keinen Syntaxbaum, keine Prüfung
-auf korrekt geschlossene Tags und kein Escaping.
+Jeder BBCode ist ein regulärer Ausdruck mit einer Ersetzung. `parse()` escaped zuerst HTML im Text und wendet dann
+alle Ausdrücke der Reihe nach an. Verschachtelte Tags, auch gleiche, werden von innen nach außen aufgelöst. Das hält
+den Parser klein und leicht erweiterbar; einen Syntaxbaum und eine Prüfung auf korrekt geschlossene Tags gibt es nicht.
 
-> [!CAUTION]
-> Der Parser reinigt die Eingabe nicht gegen XSS. HTML im Text bleibt erhalten, und auch BBCodes wie `[url]` oder
-> `[color]` lassen sich für Skripte missbrauchen. Reinige das Ergebnis vor der Ausgabe, wenn der Text von Nutzern
-> kommt. Wie, steht unter [Verwendung](usage.md#eingaben-von-nutzern-absichern).
+## Von Haus aus sicher
+
+Seit Version 6 ist der Parser für Text von Nutzern gebaut:
+
+- HTML im Text wird escaped, `<script>` bleibt sichtbarer Text.
+- Links und Bilder nehmen nur `http`, `https` (Links auch `mailto`) und relative Adressen an.
+  `[url=javascript:…]` bleibt deshalb normaler Text.
+- Werte in Attributen können nicht aus ihren Anführungszeichen ausbrechen, Farben nehmen nur Namen und Hex-Werte an.
+- Die Standard-Ausdrücke laufen in linearer Zeit. Lange oder kaputte Eingaben können den Parser nicht blockieren.
+
+Die Einzelheiten stehen unter [Verwendung](usage.md#sicherheit).
 
 ## Status
 
-Version 5.1.0 von 2024. Der Parser ist seit 2016 im Einsatz und funktioniert stabil. Wer von Version 3 oder 4 kommt,
-findet die Änderungen unter [Migration](migration.md).
+Version 6 von 2026, in TypeScript neu geschrieben, mit Builds als ES-Modul und CommonJS und mit Typdefinitionen. Der
+Parser ist seit 2016 im Einsatz. Du kommst von einer älteren Version? Die Änderungen stehen unter
+[Migration](migration.md).

@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Lightweight BBCode parser for browsers and Node.js that turns BBCode into HTML via regular expressions and supports custom codes.
+description: Lightweight BBCode parser for browsers and Node.js that turns BBCode into safe HTML via regular expressions, escapes input by default and supports custom codes.
 order: 0
 section: Getting started
 ---
@@ -20,16 +20,23 @@ bbCodeParser.parse('[b]Hello[/b] [url=https://example.com]world[/url]');
 
 ## How it works
 
-Every BBCode is a regular expression with a replacement. `parse()` applies all expressions to the text one after
-another. That keeps the parser small and easy to extend, but it also means: there is no syntax tree, no check for
-properly closed tags and no escaping.
+Every BBCode is a regular expression with a replacement. `parse()` first escapes HTML in the text and then applies all
+expressions one after another. Nested tags, also of the same kind, are resolved from the inside out. That keeps the
+parser small and easy to extend; there is no syntax tree and no check for properly closed tags.
 
-> [!CAUTION]
-> The parser does not sanitize input against XSS. HTML in the text is kept, and BBCodes like `[url]` or `[color]` can
-> be abused for scripts. Sanitize the result before output if the text comes from users. See
-> [Usage](usage.md#securing-user-input) for how.
+## Safe by default
+
+Since version 6 the parser is built for text from users:
+
+- HTML in the text is escaped, `<script>` stays visible text.
+- Links and images only accept `http`, `https` (links also `mailto`) and relative addresses, so
+  `[url=javascript:…]` stays plain text.
+- Values in attributes cannot break out of their quotes, colors only accept names and hex values.
+- The default expressions run in linear time, so long or broken input cannot block the parser.
+
+Details are listed under [Usage](usage.md#safety).
 
 ## Status
 
-Version 5.1.0 from 2024. The parser has been in use since 2016 and is stable. Coming from version 3 or 4? The changes
-are listed under [Migration](migration.md).
+Version 6 from 2026, rewritten in TypeScript, with ES module and CommonJS builds and type definitions. The parser has
+been in use since 2016. Coming from an older version? The changes are listed under [Migration](migration.md).

@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Install js-bbcode-parser via npm, check the requirements and pick the right import for Node.js, for bundlers such as esbuild or Vite or directly in the browser.
+description: Install js-bbcode-parser via npm, check the requirements and pick the right import for ES modules, CommonJS, TypeScript, bundlers or the browser via a CDN.
 order: 10
 slug: installation
 section: Getting started
@@ -16,30 +16,58 @@ The package has no dependencies.
 
 ## Requirements
 
-- **ES modules:** The package is pure ESM. In Node.js you need `import` (a `.mjs` file or `"type": "module"`).
-- **ES2018:** The expressions use the `s` flag (dot also matches line breaks). All current browsers support it, as
-  does every Node.js version with ESM support.
+| What    | Version          | Why                                                         |
+|---------|------------------|-------------------------------------------------------------|
+| Node.js | 22.13 or later   | Minimum in `engines`, the oldest supported LTS line         |
+| Browser | ES2018           | The builds target ES2018, which every current browser supports |
 
 ## What you can import
 
-| Import                            | Contents                                            |
-|-----------------------------------|-----------------------------------------------------|
-| `js-bbcode-parser`                | Ready-made parser with the default BBCodes (instance) |
-| `js-bbcode-parser/src/index.js`   | The class to create your own parser                 |
-| `js-bbcode-parser/dist/simple.js` | Ready-made parser as a single minified file         |
-| `js-bbcode-parser/dist/parser.js` | The class as a single minified file                 |
+| Import                    | Contents                                                       |
+|---------------------------|----------------------------------------------------------------|
+| `js-bbcode-parser`        | Ready-made parser with the default BBCodes (instance)          |
+| `js-bbcode-parser/parser` | The class `BBCodeParser` to create your own parser             |
+| `js-bbcode-parser/codes`  | The default BBCodes as an object, to extend them               |
 
-With npm and a bundler (esbuild, Vite, webpack) use the first two. The files in `dist/` are meant for the browser
-without a build step, e.g. via a CDN:
+Every import exists as ES module and as CommonJS:
+
+```js
+import bbCodeParser from 'js-bbcode-parser';
+import BBCodeParser from 'js-bbcode-parser/parser';
+import defaultCodes from 'js-bbcode-parser/codes';
+```
+
+```js
+const bbCodeParser = require('js-bbcode-parser').default;
+const BBCodeParser = require('js-bbcode-parser/parser').default;
+const defaultCodes = require('js-bbcode-parser/codes').default;
+```
+
+In CommonJS the default export sits in `.default`, next to the type exports. TypeScript and bundlers handle
+`import … from` for you.
+
+## TypeScript
+
+Type definitions are included. The types for codes and options are available as named type exports:
+
+```ts
+import BBCodeParser, {type BBCodeCodesType, type BBCodeParserOptionInterface} from 'js-bbcode-parser/parser';
+
+const codes: BBCodeCodesType               = {'\\[hr\\]': '<hr>'};
+const options: BBCodeParserOptionInterface = {maxDepth: 10};
+const parser                               = new BBCodeParser(codes, options);
+```
+
+## In the browser
+
+The files in `dist/` are minified ES modules and also work without a build step, e.g. via a CDN:
 
 ```html
 <script type="module">
-    import bbCodeParser from 'https://cdn.jsdelivr.net/npm/js-bbcode-parser@5/dist/simple.js';
+    import bbCodeParser from 'https://cdn.jsdelivr.net/npm/js-bbcode-parser@6/dist/simple.js';
 
     document.querySelector('#preview').innerHTML = bbCodeParser.parse('[b]Hello[/b]');
 </script>
 ```
 
-> [!WARNING]
-> The example writes the result straight into the page. For user input, sanitize it first, see
-> [Usage](usage.md#securing-user-input).
+`dist/simple.js` loads `dist/codes.js` and shared files with a hash in their name from the same folder.
