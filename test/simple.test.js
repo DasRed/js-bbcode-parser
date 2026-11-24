@@ -1,5 +1,5 @@
 import assert from 'assert';
-import bbCodeParser from '../src/simple.js'
+import bbCodeParser from '../src/simple.js';
 
 describe('Default Parser', () => {
     [
@@ -13,7 +13,7 @@ describe('Default Parser', () => {
         ],
     ].forEach(
         ([input, output], index) => it(`#${index} parsing input to the correct output`,
-            () => assert.strict.equal(bbCodeParser.parse(input), output)
-        )
+            () => assert.strict.equal(bbCodeParser.parse(input), output),
+        ),
     );
 });

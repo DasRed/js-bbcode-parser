@@ -9,16 +9,6 @@ export default class BBCode {
     }
 
     /**
-     * parse
-     *
-     * @param {String} text
-     * @returns {String}
-     */
-    parse(text) {
-        return this.codes.reduce((text, code) => text.replace(code.regexp, code.replacement), text);
-    }
-
-    /**
      * add bb codes
      *
      * @param {String} regex
@@ -28,10 +18,20 @@ export default class BBCode {
     add(regex, replacement) {
         this.codes.push({
             regexp:      new RegExp(regex, 'igms'),
-            replacement: replacement
+            replacement: replacement,
         });
 
         return this;
+    }
+
+    /**
+     * parse
+     *
+     * @param {String} text
+     * @returns {String}
+     */
+    parse(text) {
+        return this.codes.reduce((text, code) => text.replace(code.regexp, code.replacement), text);
     }
 
     /**
@@ -46,7 +46,7 @@ export default class BBCode {
 
             return {
                 regexp:      new RegExp(regex, 'igms'),
-                replacement: replacement
+                replacement: replacement,
             };
         }, this);
 
