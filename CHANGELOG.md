@@ -1,3 +1,13 @@
+## [6.0.0](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.3...v6.0.0) (2026-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* input HTML is escaped, unsafe BBCodes stay text, the onclick code is removed, [a=name] renders id and href="[#name](https://github.com/DasRed/js-bbcode-parser/issues/name)", src/ is no longer shipped (use js-bbcode-parser/parser and js-bbcode-parser/codes), CommonJS exposes the default export as require(…).default and Node.js >=22.13.0 is required.
+
+### Features
+
+* rewrite in TypeScript, fix XSS and ReDoS vulnerabilities ([d4a50a6](https://github.com/DasRed/js-bbcode-parser/commit/d4a50a6986dc483117cfc3af4e2cecc166b3a58a))
+
 ## [5.1.3](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.2...v5.1.3) (2026-11-24)
 
 ### Bug Fixes
