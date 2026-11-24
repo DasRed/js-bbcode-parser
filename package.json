@@ -13,7 +13,7 @@
     "bugs": {
         "url": "https://github.com/DasRed/js-bbcode-parser/issues"
     },
-    "homepage": "https://github.com/DasRed/js-bbcode-parser#readme",
+    "homepage": "https://www.marco-starker.de/en/projects/js-bbcode-parser/docs",
     "scripts": {
         "build": "node build/build.js",
         "test": "mocha"
