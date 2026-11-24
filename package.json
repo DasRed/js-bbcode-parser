@@ -1,6 +1,6 @@
 {
     "name": "js-bbcode-parser",
-    "version": "5.1.2",
+    "version": "5.1.3",
     "description": "Simple and efficient bbcode parser.",
     "main": "src/simple.js",
     "type": "module",

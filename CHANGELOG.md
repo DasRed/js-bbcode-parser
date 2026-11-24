@@ -1,3 +1,9 @@
+## [5.1.3](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.2...v5.1.3) (2026-11-24)
+
+### Bug Fixes
+
+* homepage fixed ([fe53e9c](https://github.com/DasRed/js-bbcode-parser/commit/fe53e9c9c93abf21346c451c520ef18c261f2ba7))
+
 ## [5.1.2](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.1...v5.1.2) (2026-11-24)
 
 ### Bug Fixes
