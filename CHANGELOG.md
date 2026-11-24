@@ -1,3 +1,9 @@
+## [5.1.2](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.1...v5.1.2) (2026-11-24)
+
+### Bug Fixes
+
+* update deps ([9457795](https://github.com/DasRed/js-bbcode-parser/commit/9457795f1731897ac28649e2848fa27e9c78b65a))
+
 ## [5.1.1](https://github.com/DasRed/js-bbcode-parser/compare/v5.1.0...v5.1.1) (2026-11-24)
 
 ### Bug Fixes
