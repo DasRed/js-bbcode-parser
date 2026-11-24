@@ -1,0 +1,22 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+permissions:
+  contents:      write
+  packages:      write
+  issues:        write
+  pull-requests: write
+  id-token:      write
+
+jobs:
+  pipeline:
+    uses: DasRed/github-workflows/.github/workflows/node-npm.yml@v2
+    secrets:
+      homeassistant-webhook-url: ${{ secrets.HOMEASSISTANT_WEBHOOK_URL }}
+    with:
+      publish-github: false
