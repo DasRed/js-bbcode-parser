@@ -14,23 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: DasRed/github-workflows/.github/actions/docs-check@v1
-
-  release-website:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: DasRed/github-workflows/.github/actions/docs-check@v1
-
-      - uses: DasRed/github-workflows/.github/actions/website-release@v1
-        with:
-          token: ${{ secrets.WEBSITE_RELEASE_TOKEN }}
-          slug:  js-bbcode-parser
+  docs:
+    uses: DasRed/github-workflows/.github/workflows/docs.yml@v2
+    secrets:
+      website-release-token: ${{ secrets.WEBSITE_RELEASE_TOKEN }}
